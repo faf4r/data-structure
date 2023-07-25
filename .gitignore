@@ -1,1 +1,9 @@
 *.exe
+.vscode/
+
+*
+!*.md
+!*.cpp
+!*.c
+!*.py
+!stack/
