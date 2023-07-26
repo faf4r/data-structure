@@ -77,17 +77,41 @@ LinkStack LinkStack::deepcopy(){
     }
 
     LinkStack stack;
-    //依次压入元素
+    // /*依次压入元素*/
+    // ptr = head.next;
+    // Node *temp;
+    // while (ptr != NULL)
+    // {
+    //     stack.push(ptr->val);
+    //     temp = ptr;
+    //     ptr = ptr->next;
+    //     delete temp;
+    // }
+    /*直接将读取出来的链表转置作为stack的数据链表*/
     ptr = head.next;
+    Node *temp=NULL;
     while (ptr != NULL)
     {
-        stack.push(ptr->val);
+        temp = ptr;
         ptr = ptr->next;
+        temp->next = stack.top.next;
+        stack.top.next = temp;
     }
+    stack.top.val = top.val;
+    
     return stack;
 }
 
 int main(void){
+    // /*deepcopy*/
+    // LinkStack s;
+    // for (int i=0; i<10; i++)
+    //     s.push(i);
+    // LinkStack stack = s.deepcopy();
+    // for (int i=0; i<10; i++){
+    //     cout << stack.pop() << endl;
+    // }
+    /*nowcoder.com*/
     int n;
     cin >> n;
     string op;
