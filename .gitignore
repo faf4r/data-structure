@@ -7,3 +7,5 @@
 !*.c
 !*.py
 !stack/
+!queue/
+!list/
