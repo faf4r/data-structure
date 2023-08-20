@@ -45,10 +45,40 @@ public:
      * @return ListNode类
      */
     ListNode* Merge(ListNode* pHead1, ListNode* pHead2) {
-        ListNode *head, *tmp, *p, *q;
+        if (pHead1==nullptr){
+            return pHead2;
+        } else if (pHead2==nullptr){
+            return pHead1;
+        }
+        //选择头结点最小的一个作为主链开始
+        ListNode *head, *q, *p, *last;
         if (pHead1->val > pHead2->val){
             head = pHead2;
-            tmp
-        } 
+            q = pHead1;
+        }  else{
+            head = pHead1;
+            q = pHead2;
+        }
+        p = head->next;
+        last = head; //记录合并链表的末尾位置
+
+        while (p){
+            if (q==nullptr){  //主链更长
+                last->next = p;
+                return head;  //已经合并完，直接return
+            }
+            if (p->val <= q->val){ //该插入的值在主链上，主链步进
+                last->next = p;
+                last = p;
+                p = p->next;
+            } else{ //该插入的值在支链，支链步进
+                last->next = q;
+                last = q;
+                q = q->next;
+            }
+        }
+        //while 结束，主链已经遍历完，此时支链必不是nullptr
+        last->next = q;
+        return head;
     }
 };
