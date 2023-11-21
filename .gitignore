@@ -1,14 +1,2 @@
 *.exe
 .vscode/
-
-*
-!*.md
-!*.cpp
-!*.c
-!*.py
-!stack/
-!queue/
-!list/
-!BiTree/
-!HuffmanTree/
-!Graph/
